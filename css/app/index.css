@@ -1,0 +1,11 @@
+#stylesheet textarea { width: 100%; }
+textarea#input { width: 50%; height: 100%; display: block; }
+
+#input-container {
+position: absolute;
+min-width: 800px;
+width: 50%;
+right: 0;
+top: 0;
+bottom: 0;
+}

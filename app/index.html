@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <title>Songs chords browser</title>
+  <style type="text/css" id=songstyle></style>
+  <script type="text/javascript" src="../js/parsers/chord_parser.js"></script>
+  <script type="text/javascript" src="../js/formatters/html_formatter.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/ui/jquery-ui-git.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/jquery-ui-git.css">
+  <link rel="stylesheet" type="text/css" href="../css/app/index.css">
+  <script type="text/javascript" src="js/base64.js"></script>
+  <script type="text/javascript" src="../js/app/index.js"></script>
+</head>
+<body>
+  <div><button id=customize>Customize output</button>
+  <button id=fetch-from-github>Fetch from GitHub repository</button>
+  <label><input type=checkbox id=inplace-edit />In-place edit</label></div>
+  <div id="stylesheet" hidden>
+    <textarea rows=8 cols=60>
+#song { margin-top: 2em; font-size: 12px; font-family: Verdana, Arial; }
+#song table.chords td,
+#song table.chords th { padding: 0; margin: 0; text-align: left; white-space: pre; }
+#song table.chords th { padding: 0 10px 0 0; }
+#song table.chords { margin-top: 0.2em; border-collapse: collapse; border: 0; }
+#song br { margin-top: 2em; }
+#song table.chords tr.chords { color: red; font-weight: bold; }
+    </textarea>
+  </div>
+  <div id=input-container hidden><label>Paste your song in chords format here:
+      <textarea id=input rows=8 cols=60>
+Ó pas[A7M]tora dos [Cº]olhos cas[Bm7]tanhos 
+[E7]Sempre a guardar teus re[A7M]banhos [E7(#5)]
+De ma[A7M]nhã eu de [G#7]longe te a[C#m7]ceno 
+[G#7]Sonho teu olhar 
+[C#m7]Nem me [Cm7]vê cha[Bm7]mar [E7]
+Ó pas[A7M]tora dos [Cº]olhos cas[Bm7]tanhos 
+[E7]Meu pensamento é só [Em7]teu [A7]
+[D]Quando qui[D#º]seres a[A7M]mor 
+Sabes [F#7]que teu pas[Bm7]tor 
+[E7]Sou [A7M]eu [E7] [Am]
+
+A tardinha tu [Bm7(b5)]voltas e as [E7]tranças tu [F7]soltas 
+Ao vento que te [E7]beija [Am]
+Vais lavar teus pe[G7]zinhos no rio [F7]
+E eu pastor, mal[E7]doso te espio [Am]
+Vendo o [Am7/G]céu conste[Dm6/F]lado 
+Eu [E7]sonho acor[F7]dado 
+E chego a pen[E7]sar [A7]
+Que a [Dm]lua é [Bm7(b5)]uma pas[Am]tora 
+Nos [Am7/G]campos do [Dm6/F]céu 
+Rebanhos [E7]a guar[Am]dar [E7]
+      </textarea>
+  </label></div>
+  <div id=song>The output will be shown here</div>
+
+  <div id="github-dialog" hidden>
+    <div><label>User ID: <input type=text id=github-userid value=rosenfeld /></label>
+         <label>Repository ID: <input type=text id=github-repositoryid value=harmonias /></label></div>
+    <button id=github-get-songs-list-button>Get songs list</button>
+    <div id="github-songs-list"></div>
+  </div>
+</body>
+</html>
