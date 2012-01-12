@@ -77,3 +77,8 @@ language in what it was created.
 
 Adding internationalization to this project would also be much appreciated. Let me
 know if you're interested on adding i18n or/and l10n support.
+
+Authors
+=======
+
+[Rodrigo Rosenfeld Rosas](http://rosenfeld.heroku.com/en/)
