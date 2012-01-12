@@ -1,5 +1,5 @@
 #stylesheet textarea { width: 100%; }
-textarea#input { width: 50%; height: 100%; display: block; }
+textarea#input { width: 50%; height: 90%; display: block; }
 
 #input-container {
 position: absolute;
