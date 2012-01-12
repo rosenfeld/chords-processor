@@ -1,5 +1,4 @@
-window.exports = window if typeof window isnt 'undefined'
-exports.Parser = class Parser
+(window ? exports).Parser = class Parser
   constructor: (@source) ->
 
   parse: -> @source.split("\n").map @processLine

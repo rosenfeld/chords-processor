@@ -1,5 +1,4 @@
-window.exports = window if typeof window isnt 'undefined'
-exports.HtmlFormatter = class HtmlFormatter
+(window ? exports).HtmlFormatter = class HtmlFormatter
   constructor: (@parsedInput) ->
 
   format: -> @parsedInput.map(@formatEntry).join('\n')
