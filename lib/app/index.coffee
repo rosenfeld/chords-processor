@@ -18,6 +18,7 @@ fetchSongListFromGithub = ->
   $.getJSON "https://api.github.com/repos/#{user}/#{repo}/git/trees/master?recursive=1&callback=?", renderGithubSongsList
 
 renderGithubSongsList = (response)->
+  $('#remaining-github-requests').text(response.meta['X-RateLimit-Remaining'])
   tree = response.data.tree
   container = $('#github-songs-list').empty()
   # TODO - sort by name first
@@ -27,6 +28,7 @@ renderGithubSongsList = (response)->
       $.getJSON("#{item.url}?callback=?", replaceSong)
 
 replaceSong = (response)->
+  $('#remaining-github-requests').text(response.meta['X-RateLimit-Remaining'])
   base64Content = response.data.content
   $('#input').val(decode(base64Content)).change()
   $('#github-dialog').dialog('close')
