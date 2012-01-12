@@ -14,7 +14,7 @@ describe "Parser", ->
         lyrics: ['Ó pas', 'tora dos ', 'olhos cas', 'tanhos']
       },
       {
-        chords: ['E7', 'A7M', 'E7(#5)'],
+        chords: ['E7', 'A7M', 'E7(♯5)'],
         lyrics: ['Sempre a guardar teus re', 'banhos ', '']
       },
       {
@@ -22,7 +22,7 @@ describe "Parser", ->
         lyrics: ['']
       },
       {
-        chords: ['', 'Bm7(b5)', 'E7', 'F7'],
+        chords: ['', 'Bm7(♭5)', 'E7', 'F7'],
         lyrics: ['À tardinha tu ', 'voltas e as ', 'tranças tu ', 'soltas']
       },
       {
