@@ -41,6 +41,27 @@ Currently those are the supported features:
 - Has GitHub integration
 - Highly customizable output
 
+Building from source
+====================
+
+All scripts are written in [CoffeeScript](http://coffeescript.org/).
+
+Just install [Node.js](http://nodejs.org/) (latest version already includes npm)
+and install coffeescript:
+
+    npm install coffeescript
+
+Then just run ./build.sh or, if you're on Windows:
+
+    coffee -c -o js lib/
+
+If you want to contribute, I'd suggest you to take a look at [jitter](https://github.com/TrevorBurnham/Jitter):
+
+    npm install jitter
+    jitter lib/ js/
+
+This will watch for changes and regenerate the JavaScript after each change.
+
 Contributions / TO-DO
 ====================
 
