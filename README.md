@@ -3,9 +3,9 @@ Description
 
 This library formats to HTML input like this:
 
-> It's not [G]time to make a [D]change, just re[C]lax, take it [Am7]easy
-> you're still [G]young, that's your [Em]fault,
-> there's so [Am]much you have to [D]know
+    It's not [G]time to make a [D]change, just re[C]lax, take it [Am7]easy
+    you're still [G]young, that's your [Em]fault,
+    there's so [Am]much you have to [D]know
 
 Example
 =======
