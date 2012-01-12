@@ -7,7 +7,7 @@ describe "Parser", ->
     À tardinha tu [Bm7(b5)]voltas e as [E7]tranças tu [F7]soltas 
     Ao vento que te [E7]beija [Am]"""
     #expect(new Parser(example).parse()).toEqual([
-    results = new Parser(example).parse()
+    results = new Parser(example).parse().lines
     [
       {
         chords: ['', 'A7M', 'Cº', 'Bm7'],
@@ -32,3 +32,8 @@ describe "Parser", ->
     ].forEach (entry, i) ->
       expect(results[i].lyrics).toEqual(entry.lyrics)
       expect(results[i].chords).toEqual(entry.chords)
+
+  it "supports key:value directives", ->
+    expect(new Parser("{tone: B}").parse().attributes.tone).toEqual "B"
+    expect(new Parser("{tone:B}").parse().attributes.tone).toEqual "B"
+    expect(new Parser("{ Tone :  B  }").parse().attributes.tone).toEqual "B"

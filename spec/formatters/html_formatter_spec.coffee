@@ -23,3 +23,19 @@ describe "HtmlFormatter", ->
       '<table class=chords><tr class=chords><th></th><th>E7</th><th>Am</th></tr>' +
       "<tr class=lyrics><td>Ao vento que te </td><td>beija </td><td></td></tr></table>"
     )
+
+  it "formats title, author, artist and tone", ->
+    songInfo = """
+      {title: Pastora dos Olhos Castanhos}
+      {author: Horondino Silva e Alberto Ribeiro}
+      {artist: Paulinho da Viola}
+      {tone: A}
+    """
+    input = new Parser(songInfo).parse()
+    expect(new HtmlFormatter(input).format()).toEqual("""
+<h1 class=title>Pastora dos Olhos Castanhos</h1>
+<h2 class=author>Horondino Silva e Alberto Ribeiro</h2>
+<h2 class=artist>Paulinho da Viola</h2>
+<h2 class=tone>A</h2>
+<br/>
+    """)

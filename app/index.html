@@ -23,6 +23,7 @@
   </header>
   <div id="stylesheet" hidden>
     <textarea rows=8 cols=60>
+
 #song { margin-top: 2em; font-size: 12px; font-family: Verdana, Arial; }
 #song table.chords td,
 #song table.chords th { padding: 0; margin: 0; text-align: left; white-space: pre; }
@@ -30,11 +31,28 @@
 #song table.chords { margin-top: 0.2em; border-collapse: collapse; border: 0; }
 #song br { margin-top: 2em; }
 #song table.chords tr.chords { color: red; font-weight: bold; }
-@media print { #song table.chords tr.chords { color: black; } }
+
+#song .author:before { content: "(" ; }
+#song .author:after { content: ")" ; }
+#song .title { color: blue; margin: 0.1em 0; }
+#song .author { color: grey; margin: 0.1em 0; }
+#song .artist { color: black; margin: 0.1em 0; }
+#song .tone { color: red; margin: 0.1em 0; }
+#song .tone:before { content: "Tom: "; }
+
+@media print {
+  #song table.chords tr.chords,
+  #song .title, #song .author, #song .artist, #song .tone { color: black; }
+}
     </textarea>
   </div>
   <div id=input-container hidden><label>Paste your song in chords format here:
       <textarea id=input rows=8 cols=60>
+      {title: Pastora dos Olhos Castanhos}
+      {author: Horondino Silva e Alberto Ribeiro}
+      {artist: Paulinho da Viola}
+      {tone: A}
+
 Ó pas[A7M]tora dos [Cº]olhos cas[Bm7]tanhos 
 [E7]Sempre a guardar teus re[A7M]banhos [E7(#5)]
 De ma[A7M]nhã eu de [G#7]longe te a[C#m7]ceno 
