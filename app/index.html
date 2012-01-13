@@ -5,6 +5,7 @@
 
   <title>Songs chords browser</title>
   <style type="text/css" id=songstyle></style>
+  <script type="text/javascript" src="../js/transposer/transposer.js"></script>
   <script type="text/javascript" src="../js/parsers/chord_parser.js"></script>
   <script type="text/javascript" src="../js/formatters/html_formatter.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -43,7 +44,7 @@
 #song .title { color: blue; margin: 0.1em 0; }
 #song .author { color: grey; margin: 0.1em 0; }
 #song .artist { color: black; margin: 0.1em 0; }
-#song .tone { color: red; margin: 0.3em 0 1em 0; font-size: 14px;}
+#song .tone { color: red; margin: 0.3em 0 1em 0; font-size: 14px; cursor: pointer; }
 #song .tone:before { content: "Tom: "; }
 
 @media print {
@@ -92,5 +93,20 @@ Rebanhos [E7]a guar[Am]dar [E7]
     (limited to 5000 per hour)</span>
     <div id="github-songs-list"></div>
   </div>
+
+  <div id="transposition" hidden>Transpose to: <select>
+      <option value="" selected>-</option>
+      <option>A</option>
+      <option>Bb</option>
+      <option>B</option>
+      <option>C</option>
+      <option>C#</option>
+      <option>D</option>
+      <option>Eb</option>
+      <option>F</option>
+      <option>F#</option>
+      <option>G</option>
+      <option>Ab</option>
+  </select></div>
 </body>
 </html>

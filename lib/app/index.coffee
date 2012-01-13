@@ -4,9 +4,13 @@ $ ->
   $('#stylesheet textarea').on('change keyup', -> $('#songstyle').text($(this).val())).change()
   $('#input').on('change keyup mouseup input', -> $('#song').html(processSong($(this).val()))).change()
   setupGithubIntegration()
+  setupTransposition()
 
 processSong = (input) ->
-  new HtmlFormatter(new Parser(input).parse()).format()
+  parser = new Parser(input)
+  tone = $('#transposition select').val()
+  parser.transposeTo(tone) if tone
+  new HtmlFormatter(parser.parse()).format()
 
 setupGithubIntegration = ->
   $('#fetch-from-github').click -> $('#github-dialog').dialog(modal: true, width: '90%', height: 500)
@@ -37,4 +41,9 @@ replaceSong = (response)->
   $('#input').val(decode(base64Content)).change()
   $('#github-dialog').dialog('close')
 
-
+setupTransposition = ->
+  $(document).on 'click', '#song .tone', -> $('#transposition').dialog()
+  $('#transposition select').on 'change', ->
+    # TODO - Should the inline-edit textarea reflect the current tone?
+    $('#input').change()
+    $('#song .tone').text(this.value) if this.value

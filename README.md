@@ -40,6 +40,7 @@ Currently those are the supported features:
 - Enable inline-editing
 - Has GitHub integration
 - Highly customizable output
+- Transposition support
 
 Building from source
 ====================
@@ -64,10 +65,6 @@ This will watch for changes and regenerate the JavaScript after each change.
 
 Contributions / TO-DO
 ====================
-
-The next step for this library is allowing the user to transpose the song. So,
-feel free to implement it before me if you want to. Just let me know that you're
-working on it and I'd like to discuss some ideas.
 
 Not every user of this example application is a developer but the application may still be
 useful for them. I'd appreciate if someone could create a screencast teaching how to send

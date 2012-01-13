@@ -37,3 +37,20 @@ describe "Parser", ->
     expect(new Parser("{tone: B}").parse().attributes.tone).toEqual "B"
     expect(new Parser("{tone:B}").parse().attributes.tone).toEqual "B"
     expect(new Parser("{ Tone :  B  }").parse().attributes.tone).toEqual "B"
+
+  it "supports transposition", ->
+    example = """{tone: A}Ó pas[A7M]tora dos [Cº]olhos cas[Bm7]tanhos
+    [E7]Sempre a guardar teus re[A7M]banhos [E7(#5)]"""
+    results = new Parser(example).transposeTo('C').parse().lines
+    [
+      {
+        chords: ['', 'C7M', 'E♭º', 'Dm7'],
+        lyrics: ['Ó pas', 'tora dos ', 'olhos cas', 'tanhos']
+      },
+      {
+        chords: ['G7', 'C7M', 'G7(♯5)'],
+        lyrics: ['Sempre a guardar teus re', 'banhos ', '']
+      },
+    ].forEach (entry, i) ->
+      expect(results[i].lyrics).toEqual(entry.lyrics)
+      expect(results[i].chords).toEqual(entry.chords)
