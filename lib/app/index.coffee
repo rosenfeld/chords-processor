@@ -21,7 +21,6 @@ renderGithubSongsList = (response)->
   $('#remaining-github-requests').text(response.meta['X-RateLimit-Remaining'])
   tree = response.data.tree
   container = $('#github-songs-list').empty()
-  # TODO - sort by name first
   tree.forEach (item)->
     return unless item.type is 'blob'
     itemName = decodePath(item.path).replace(/^\"/, '').replace(/\"$/, '')
