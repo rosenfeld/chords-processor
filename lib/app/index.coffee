@@ -2,9 +2,15 @@ $ ->
   $('#customize').click -> $('#stylesheet').dialog(width: '800px')
   $('#inplace-edit').on('change', -> $('#input-container').toggle(this.checked))
   $('#stylesheet textarea').on('change keyup', -> $('#songstyle').text($(this).val())).change()
-  $('#input').on('change keyup mouseup input', -> $('#song').html(processSong($(this).val()))).change()
+  $('#input').on('change keyup mouseup input', ->
+    $('#song').html(processSong($(this).val()))
+    $('#song tr.chords').toggle($('#show-real-chords')[0].checked)
+    $('#song tr.normalized-chords').toggle($('#show-normalized-chords')[0].checked)
+  ).change()
+
   setupGithubIntegration()
   setupTransposition()
+  setupChordsVisibility()
 
 processSong = (input) ->
   parser = new Parser(input)
@@ -47,3 +53,7 @@ setupTransposition = ->
     # TODO - Should the inline-edit textarea reflect the current tone?
     $('#input').change()
     $('#song .tone').text(this.value) if this.value
+
+setupChordsVisibility = ->
+  $('#show-real-chords').change -> $('#song tr.chords').toggle()
+  $('#show-normalized-chords').change -> $('#song tr.normalized-chords').toggle()

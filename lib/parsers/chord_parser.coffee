@@ -4,6 +4,7 @@ Transposer = window?.Transposer or require('../transposer/transposer').Transpose
 
   parse: ->
     @processDirectives()
+    @transposer or= new Transposer(@attributes.tone) if @attributes.tone
     lines: @source.split("\n").map(@processLine).filter (l)-> l isnt null
     attributes: @attributes
 
@@ -26,9 +27,11 @@ Transposer = window?.Transposer or require('../transposer/transposer').Transpose
     if new RegExp("^#{chordExpr}").test(line) then lyrics.shift()
     else chords?.unshift ''
     if chords and @transposer
-      chords = chords.map (chord)=>
+      normalized = chords.map (chord)=>
+        chord and @transposer.normalize(chord) or ''
+      if @transposer.to then chords = chords.map (chord)=>
         chord and @transposer.transpose(chord) or ''
-    chords: chords, lyrics: lyrics
+    chords: chords, lyrics: lyrics, normalized: normalized
 
   transposeTo: (tone)->
     @processDirectives()

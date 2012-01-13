@@ -10,11 +10,16 @@
     @addTone() if @attributes.tone
     @output += @parsedInput.lines.map(@formatEntry).join('\n')
 
-  formatEntry: (entry) ->
+  formatEntry: (entry) =>
     unless entry.chords
       lyric = entry.lyrics[0]
       return if lyric then "<div class=lyrics>#{lyric}</div>" else "<br/>"
-    '<table class=chords><tr class=chords><th>' +
+    if entry.normalized
+      normalizedTr = '<tr class="normalized-chords chords-common"><th>' +
+        entry.normalized.join('</th><th>') + '</th></tr>'
+        
+    '<table class=chords>' + (normalizedTr or '') +
+      '<tr class="chords chords-common"><th>' +
       entry.chords.join('</th><th>') +
       '</th></tr><tr class=lyrics><td>' +
       entry.lyrics.join('</td><td>') +
