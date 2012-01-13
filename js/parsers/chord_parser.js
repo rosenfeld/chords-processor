@@ -1,10 +1,14 @@
 (function() {
-  var Parser;
+  var Parser, Transposer;
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+  Transposer = (typeof window !== "undefined" && window !== null ? window.Transposer : void 0) || require('../transposer/transposer').Transposer;
 
   (typeof window !== "undefined" && window !== null ? window : exports).Parser = Parser = (function() {
 
     function Parser(source) {
       this.source = source;
+      this.processLine = __bind(this.processLine, this);
     }
 
     Parser.prototype.parse = function() {
@@ -20,6 +24,7 @@
     Parser.prototype.processDirectives = function() {
       var _ref;
       var _this = this;
+      if (this.attributes) return;
       this.attributes = {};
       if ((_ref = this.source.match(/{.*?}/g)) != null) {
         _ref.forEach(function(directive) {
@@ -35,6 +40,7 @@
 
     Parser.prototype.processLine = function(line) {
       var chordExpr, chords, lyrics, regex, _ref;
+      var _this = this;
       line = line.trim();
       if (line === '' && this.lastProcessedLine === '') return null;
       this.lastProcessedLine = line;
@@ -49,10 +55,21 @@
       } else {
         if (chords != null) chords.unshift('');
       }
+      if (chords && this.transposer) {
+        chords = chords.map(function(chord) {
+          return chord && _this.transposer.transpose(chord) || '';
+        });
+      }
       return {
         chords: chords,
         lyrics: lyrics
       };
+    };
+
+    Parser.prototype.transposeTo = function(tone) {
+      this.processDirectives();
+      this.transposer = new Transposer(this.attributes.tone, tone);
+      return this;
     };
 
     return Parser;

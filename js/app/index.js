@@ -1,5 +1,5 @@
 (function() {
-  var decodePath, fetchSongListFromGithub, processSong, renderGithubSongsList, replaceSong, setupGithubIntegration;
+  var decodePath, fetchSongListFromGithub, processSong, renderGithubSongsList, replaceSong, setupGithubIntegration, setupTransposition;
 
   $(function() {
     $('#customize').click(function() {
@@ -16,11 +16,16 @@
     $('#input').on('change keyup mouseup input', function() {
       return $('#song').html(processSong($(this).val()));
     }).change();
-    return setupGithubIntegration();
+    setupGithubIntegration();
+    return setupTransposition();
   });
 
   processSong = function(input) {
-    return new HtmlFormatter(new Parser(input).parse()).format();
+    var parser, tone;
+    parser = new Parser(input);
+    tone = $('#transposition select').val();
+    if (tone) parser.transposeTo(tone);
+    return new HtmlFormatter(parser.parse()).format();
   };
 
   setupGithubIntegration = function() {
@@ -68,6 +73,16 @@
     base64Content = response.data.content;
     $('#input').val(decode(base64Content)).change();
     return $('#github-dialog').dialog('close');
+  };
+
+  setupTransposition = function() {
+    $(document).on('click', '#song .tone', function() {
+      return $('#transposition').dialog();
+    });
+    return $('#transposition select').on('change', function() {
+      $('#input').change();
+      if (this.value) return $('#song .tone').text(this.value);
+    });
   };
 
 }).call(this);
