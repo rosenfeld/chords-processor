@@ -44,13 +44,16 @@ describe "Parser", ->
     results = new Parser(example).transposeTo('C').parse().lines
     [
       {
-        chords: ['', 'C7M', 'E♭º', 'Dm7'],
-        lyrics: ['Ó pas', 'tora dos ', 'olhos cas', 'tanhos']
+        normalized: ['', 'I7M', 'III♭º', 'IIm7'],
+        chords:     ['', 'C7M', 'E♭º', 'Dm7'],
+        lyrics:     ['Ó pas', 'tora dos ', 'olhos cas', 'tanhos']
       },
       {
-        chords: ['G7', 'C7M', 'G7(♯5)'],
-        lyrics: ['Sempre a guardar teus re', 'banhos ', '']
+        normalized: ['V7', 'I7M', 'V7(♯5)']
+        chords:     ['G7', 'C7M', 'G7(♯5)'],
+        lyrics:     ['Sempre a guardar teus re', 'banhos ', '']
       },
     ].forEach (entry, i) ->
       expect(results[i].lyrics).toEqual(entry.lyrics)
       expect(results[i].chords).toEqual(entry.chords)
+      expect(results[i].normalized).toEqual(entry.normalized)

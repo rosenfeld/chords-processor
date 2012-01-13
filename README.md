@@ -41,6 +41,7 @@ Currently those are the supported features:
 - Has GitHub integration
 - Highly customizable output
 - Transposition support
+- Supports normalized chords
 
 Building from source
 ====================

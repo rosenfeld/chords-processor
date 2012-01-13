@@ -5,7 +5,10 @@ NOTES = [
   ['E♭', 'D♯'], 'E', 'F', ['G♭', 'F♯'], 'G', ['A♭', 'G♯']
 ]
 
-NORMALIZED = [ 'I', '', 'II', '', 'III', 'IV', '', 'V', '', 'VI', '', 'VII' ]
+NORMALIZED = [
+  'I', 'I♯', 'II', 'III♭', 'III', 'IV', 'IV♯',
+  'V', 'VI♭', 'VI', 'VII♭', 'VII'
+]
 # - 1, b - 0
 ACCIDENTS  = [ 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1 ]
 # C  - C# - D  - Eb - E  - F  - F# - G  - Ab - A  - Bb - B
@@ -42,7 +45,9 @@ INVERTED_REGEX = /(\/\s*)([A-G][#♯b♭]?)\s*$/
     idx
 
   normalize: (chord)->
-    NORMALIZED[@relativeIdx(chord[0])] + chord[1..-1]
+    chord = chord.replace /^[A-G][#♯b♭]?/, NORMALIZED[@relativeIdx(chord)]
+    chord.replace INVERTED_REGEX, (_, prefix, inversion) =>
+      prefix + @normalize(inversion)
 
   transpose: (chord)->
     newIdx = @relativeIdx(chord) + @delta + @absolute

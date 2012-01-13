@@ -21,9 +21,13 @@
 <body>
   <header>
   <a href="http://github.com/rosenfeld/chords-processor"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/abad93f42020b733148435e2cd92ce15c542d320/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub"></a>
-  <div><button id=customize>Customize output</button>
-  <button id=fetch-from-github>Fetch from GitHub repository</button>
-  <label><input type=checkbox id=inplace-edit />In-place edit</label></div>
+  <div>
+    <button id=customize>Customize output</button>
+    <button id=fetch-from-github>Fetch from GitHub repository</button>
+    <label><input type=checkbox id=inplace-edit />In-place edit</label>
+    <label><input type=checkbox id=show-real-chords checked />Show real chords</label>
+    <label><input type=checkbox id=show-normalized-chords />Show normalized chords</label>
+  </div>
   <g:plusone annotation="inline"></g:plusone>
   <div id="fb-root"></div>
   <div class="fb-like" data-href="http://rosenfeld.github.com/chords-processor/app/index.html" data-send="true" data-width="450" data-show-faces="false"></div>
@@ -37,7 +41,8 @@
 #song table.chords th { padding: 0 10px 0 0; }
 #song table.chords { margin-top: 0.2em; border-collapse: collapse; border: 0; }
 #song br { margin-top: 2em; }
-#song table.chords tr.chords { color: red; font-weight: bold; }
+#song table.chords tr.chords { color: red; }
+#song table.chords tr.normalized-chords { color: blue; }
 
 #song .author:before { content: "(" ; }
 #song .author:after { content: ")" ; }
