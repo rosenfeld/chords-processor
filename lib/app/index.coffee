@@ -24,8 +24,13 @@ renderGithubSongsList = (response)->
   # TODO - sort by name first
   tree.forEach (item)->
     return unless item.type is 'blob'
-    $('<a href="#"/>').text(item.path).appendTo(container).click ->
+    itemName = decodePath(item.path).replace(/^\"/, '').replace(/\"$/, '')
+    $('<a href="#"/>').text(itemName).appendTo(container).click ->
       $.getJSON("#{item.url}?callback=?", replaceSong)
+
+decodePath = (path)->
+  decodeURI escape path.replace /\\(\d{3})\\(\d{3})/g, (_, oct1, oct2)->
+    String.fromCharCode(parseInt("0#{oct1}"), parseInt("0#{oct2}"))
 
 replaceSong = (response)->
   $('#remaining-github-requests').text(response.meta['X-RateLimit-Remaining'])
