@@ -2,13 +2,15 @@
 textarea#input { width: 50%; height: 90%; display: block; }
 
 #input-container {
-position: absolute;
-min-width: 800px;
-width: 50%;
-right: 0;
-top: 0;
-bottom: 0;
+  position: absolute;
+  min-width: 800px;
+  width: 50%;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
+
+#github-songs-list a { display: block }
 
 @media print {
   header { display: none }
