@@ -1,3 +1,4 @@
+Transposer = window?.Transposer or require('../transposer/transposer').Transposer
 (window ? exports).Parser = class Parser
   constructor: (@source) ->
 
@@ -7,13 +8,14 @@
     attributes: @attributes
 
   processDirectives: ->
+    return if @attributes
     @attributes = {}
     @source.match(/{.*?}/g)?.forEach (directive)=>
       [key, value] = directive[1..-2].split(':').map (d)-> d.trim()
       @attributes[key.toLowerCase()] = value
     @source = @source.replace(/{.*?}/g, '')
 
-  processLine: (line)->
+  processLine: (line)=>
     line = line.trim()
     return null if line is '' and @lastProcessedLine is ''
     @lastProcessedLine = line
@@ -23,4 +25,13 @@
       chord[1..-2].replace('b', '\u266d').replace('#', '\u266f')
     if new RegExp("^#{chordExpr}").test(line) then lyrics.shift()
     else chords?.unshift ''
+    if chords and @transposer
+      chords = chords.map (chord)=>
+        chord and @transposer.transpose(chord) or ''
     chords: chords, lyrics: lyrics
+
+  transposeTo: (tone)->
+    @processDirectives()
+    @transposer = new Transposer(@attributes.tone, tone)
+    this
+
