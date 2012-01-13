@@ -13,6 +13,9 @@
 
     Parser.prototype.parse = function() {
       this.processDirectives();
+      if (this.attributes.tone) {
+        this.transposer || (this.transposer = new Transposer(this.attributes.tone));
+      }
       return {
         lines: this.source.split("\n").map(this.processLine).filter(function(l) {
           return l !== null;
@@ -39,7 +42,7 @@
     };
 
     Parser.prototype.processLine = function(line) {
-      var chordExpr, chords, lyrics, regex, _ref;
+      var chordExpr, chords, lyrics, normalized, regex, _ref;
       var _this = this;
       line = line.trim();
       if (line === '' && this.lastProcessedLine === '') return null;
@@ -56,13 +59,19 @@
         if (chords != null) chords.unshift('');
       }
       if (chords && this.transposer) {
-        chords = chords.map(function(chord) {
-          return chord && _this.transposer.transpose(chord) || '';
+        normalized = chords.map(function(chord) {
+          return chord && _this.transposer.normalize(chord) || '';
         });
+        if (this.transposer.to) {
+          chords = chords.map(function(chord) {
+            return chord && _this.transposer.transpose(chord) || '';
+          });
+        }
       }
       return {
         chords: chords,
-        lyrics: lyrics
+        lyrics: lyrics,
+        normalized: normalized
       };
     };
 

@@ -1,5 +1,5 @@
 (function() {
-  var decodePath, fetchSongListFromGithub, processSong, renderGithubSongsList, replaceSong, setupGithubIntegration, setupTransposition;
+  var decodePath, fetchSongListFromGithub, processSong, renderGithubSongsList, replaceSong, setupChordsVisibility, setupGithubIntegration, setupTransposition;
 
   $(function() {
     $('#customize').click(function() {
@@ -14,10 +14,13 @@
       return $('#songstyle').text($(this).val());
     }).change();
     $('#input').on('change keyup mouseup input', function() {
-      return $('#song').html(processSong($(this).val()));
+      $('#song').html(processSong($(this).val()));
+      $('#song tr.chords').toggle($('#show-real-chords')[0].checked);
+      return $('#song tr.normalized-chords').toggle($('#show-normalized-chords')[0].checked);
     }).change();
     setupGithubIntegration();
-    return setupTransposition();
+    setupTransposition();
+    return setupChordsVisibility();
   });
 
   processSong = function(input) {
@@ -82,6 +85,15 @@
     return $('#transposition select').on('change', function() {
       $('#input').change();
       if (this.value) return $('#song .tone').text(this.value);
+    });
+  };
+
+  setupChordsVisibility = function() {
+    $('#show-real-chords').change(function() {
+      return $('#song tr.chords').toggle();
+    });
+    return $('#show-normalized-chords').change(function() {
+      return $('#song tr.normalized-chords').toggle();
     });
   };
 

@@ -1,10 +1,12 @@
 (function() {
   var HtmlFormatter;
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   (typeof window !== "undefined" && window !== null ? window : exports).HtmlFormatter = HtmlFormatter = (function() {
 
     function HtmlFormatter(parsedInput) {
       this.parsedInput = parsedInput;
+      this.formatEntry = __bind(this.formatEntry, this);
     }
 
     HtmlFormatter.prototype.format = function() {
@@ -18,7 +20,7 @@
     };
 
     HtmlFormatter.prototype.formatEntry = function(entry) {
-      var lyric;
+      var lyric, normalizedTr;
       if (!entry.chords) {
         lyric = entry.lyrics[0];
         if (lyric) {
@@ -27,7 +29,10 @@
           return "<br/>";
         }
       }
-      return '<table class=chords><tr class=chords><th>' + entry.chords.join('</th><th>') + '</th></tr><tr class=lyrics><td>' + entry.lyrics.join('</td><td>') + '</td></tr></table>';
+      if (entry.normalized) {
+        normalizedTr = '<tr class="normalized-chords chords-common"><th>' + entry.normalized.join('</th><th>') + '</th></tr>';
+      }
+      return '<table class=chords>' + (normalizedTr || '') + '<tr class="chords chords-common"><th>' + entry.chords.join('</th><th>') + '</th></tr><tr class=lyrics><td>' + entry.lyrics.join('</td><td>') + '</td></tr></table>';
     };
 
     HtmlFormatter.prototype.addTitle = function() {
