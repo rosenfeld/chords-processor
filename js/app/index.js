@@ -1,5 +1,5 @@
 (function() {
-  var fetchSongListFromGithub, processSong, renderGithubSongsList, replaceSong, setupGithubIntegration;
+  var decodePath, fetchSongListFromGithub, processSong, renderGithubSongsList, replaceSong, setupGithubIntegration;
 
   $(function() {
     $('#customize').click(function() {
@@ -47,11 +47,19 @@
     tree = response.data.tree;
     container = $('#github-songs-list').empty();
     return tree.forEach(function(item) {
+      var itemName;
       if (item.type !== 'blob') return;
-      return $('<a href="#"/>').text(item.path).appendTo(container).click(function() {
+      itemName = decodePath(item.path).replace(/^\"/, '').replace(/\"$/, '');
+      return $('<a href="#"/>').text(itemName).appendTo(container).click(function() {
         return $.getJSON("" + item.url + "?callback=?", replaceSong);
       });
     });
+  };
+
+  decodePath = function(path) {
+    return decodeURI(escape(path.replace(/\\(\d{3})\\(\d{3})/g, function(_, oct1, oct2) {
+      return String.fromCharCode(parseInt("0" + oct1), parseInt("0" + oct2));
+    })));
   };
 
   replaceSong = function(response) {
