@@ -10,6 +10,8 @@ textarea#input { width: 50%; height: 90%; display: block; }
   bottom: 0;
 }
 
+#github-songs-list a { display: block }
+
 @media print {
   header { display: none }
 }
