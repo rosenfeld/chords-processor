@@ -76,6 +76,12 @@ language in what it was created.
 Adding internationalization to this project would also be much appreciated. Let me
 know if you're interested on adding i18n or/and l10n support.
 
+Bugs
+====
+
+If you think you've found any bugs, please report them in the
+[GitHub issues page](https://github.com/rosenfeld/chords-processor/issues).
+
 Authors
 =======
 
