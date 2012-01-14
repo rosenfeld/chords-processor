@@ -16,7 +16,8 @@
     $('#input').on('change keyup mouseup input', function() {
       $('#song').html(processSong($(this).val()));
       $('#song tr.chords').toggle($('#show-real-chords')[0].checked);
-      return $('#song tr.normalized-chords').toggle($('#show-normalized-chords')[0].checked);
+      $('#song tr.normalized-chords').toggle($('#show-normalized-chords')[0].checked);
+      return $('#song tr.lyrics').toggle($('#show-lyrics')[0].checked);
     }).change();
     setupGithubIntegration();
     setupTransposition();
@@ -92,8 +93,11 @@
     $('#show-real-chords').change(function() {
       return $('#song tr.chords').toggle();
     });
-    return $('#show-normalized-chords').change(function() {
+    $('#show-normalized-chords').change(function() {
       return $('#song tr.normalized-chords').toggle();
+    });
+    return $('#show-lyrics').change(function() {
+      return $('#song tr.lyrics').toggle();
     });
   };
 
