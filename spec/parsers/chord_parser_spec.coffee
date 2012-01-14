@@ -44,7 +44,7 @@ describe "Parser", ->
     results = new Parser(example).transposeTo('C').parse().lines
     [
       {
-        normalized: ['', 'I7M', 'III♭º', 'IIm7'],
+        normalized: ['', 'I7M', '♭IIIº', 'IIm7'],
         chords:     ['', 'C7M', 'E♭º', 'Dm7'],
         lyrics:     ['Ó pas', 'tora dos ', 'olhos cas', 'tanhos']
       },

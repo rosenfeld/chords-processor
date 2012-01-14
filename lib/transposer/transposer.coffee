@@ -6,8 +6,8 @@ NOTES = [
 ]
 
 NORMALIZED = [
-  'I', 'I♯', 'II', 'III♭', 'III', 'IV', 'IV♯',
-  'V', 'VI♭', 'VI', 'VII♭', 'VII'
+  'I', '♯I', 'II', '♭III', 'III', 'IV', '♯IV',
+  'V', '♭VI', 'VI', '♭VII', 'VII'
 ]
 # - 1, b - 0
 ACCIDENTS  = [ 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1 ]
