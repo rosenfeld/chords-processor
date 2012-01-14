@@ -3,7 +3,7 @@
 
   NOTES = ['A', ['B♭', 'A♯'], 'B', 'C', ['D♭', 'C♯'], 'D', ['E♭', 'D♯'], 'E', 'F', ['G♭', 'F♯'], 'G', ['A♭', 'G♯']];
 
-  NORMALIZED = ['I', 'I♯', 'II', 'III♭', 'III', 'IV', 'IV♯', 'V', 'VI♭', 'VI', 'VII♭', 'VII'];
+  NORMALIZED = ['I', '♯I', 'II', '♭III', 'III', 'IV', '♯IV', 'V', '♭VI', 'VI', '♭VII', 'VII'];
 
   ACCIDENTS = [1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1];
 
