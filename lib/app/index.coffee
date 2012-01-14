@@ -6,6 +6,7 @@ $ ->
     $('#song').html(processSong($(this).val()))
     $('#song tr.chords').toggle($('#show-real-chords')[0].checked)
     $('#song tr.normalized-chords').toggle($('#show-normalized-chords')[0].checked)
+    $('#song tr.lyrics').toggle($('#show-lyrics')[0].checked)
   ).change()
 
   setupGithubIntegration()
@@ -57,3 +58,4 @@ setupTransposition = ->
 setupChordsVisibility = ->
   $('#show-real-chords').change -> $('#song tr.chords').toggle()
   $('#show-normalized-chords').change -> $('#song tr.normalized-chords').toggle()
+  $('#show-lyrics').change -> $('#song tr.lyrics').toggle()
