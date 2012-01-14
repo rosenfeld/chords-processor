@@ -46,7 +46,7 @@ describe "HtmlFormatter", ->
     expect(new HtmlFormatter(input).format()).toEqual(
       "<h2 class=tone>A</h2>\n" +
       '<table class=chords>' +
-      '<tr class="normalized-chords chords-common"><th></th><th>I7M</th><th>III♭º</th><th>IIm7</th></tr>' +
+      '<tr class="normalized-chords chords-common"><th></th><th>I7M</th><th>♭IIIº</th><th>IIm7</th></tr>' +
       '<tr class="chords chords-common"><th></th><th>A7M</th><th>Cº</th><th>Bm7</th></tr>' +
       "<tr class=lyrics><td>Ó pas</td><td>tora dos </td><td>olhos cas</td><td>tanhos</td></tr></table>"
     )

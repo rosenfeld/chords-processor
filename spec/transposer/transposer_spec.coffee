@@ -19,7 +19,7 @@ describe 'Transposer', ->
 
   it 'normalizes chords', ->
     transposer = new Transposer('D')
-    expectations = {D: 'I', 'D♯': 'I♯', Eb: 'I♯', E: 'II', 'Dm7': 'Im7'}
+    expectations = {D: 'I', 'D♯': '♯I', Eb: '♯I', E: 'II', 'Dm7': 'Im7'}
     expect(transposer.normalize(base)).toEqual(normalized) for base, normalized of expectations
 
   it 'transposes between major tones', ->
