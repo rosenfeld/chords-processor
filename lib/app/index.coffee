@@ -2,16 +2,19 @@ $ ->
   $('#customize').click -> $('#stylesheet').dialog(width: '800px')
   $('#inplace-edit').on('change', -> $('#input-container').toggle(this.checked))
   $('#stylesheet textarea').on('change keyup', -> $('#songstyle').text($(this).val())).change()
-  $('#input').on('change keyup mouseup input', ->
-    $('#song').html(processSong($(this).val()))
-    $('#song tr.chords').toggle($('#show-real-chords')[0].checked)
-    $('#song tr.normalized-chords').toggle($('#show-normalized-chords')[0].checked)
-    $('#song tr.lyrics').toggle($('#show-lyrics')[0].checked)
-  ).change()
+  $('#input').on('change keyup mouseup input', onInputChange).change()
 
   setupGithubIntegration()
   setupTransposition()
   setupChordsVisibility()
+
+onInputChange = ->
+    $('#song').html(processSong($(this).val()))
+    tone = $('#transposition select').val()
+    $('#song .tone').text(tone) if tone
+    $('#song tr.chords').toggle($('#show-real-chords')[0].checked)
+    $('#song tr.normalized-chords').toggle($('#show-normalized-chords')[0].checked)
+    $('#song tr.lyrics').toggle($('#show-lyrics')[0].checked)
 
 processSong = (input) ->
   parser = new Parser(input)
@@ -45,6 +48,7 @@ decodePath = (path)->
 replaceSong = (response)->
   $('#remaining-github-requests').text(response.meta['X-RateLimit-Remaining'])
   base64Content = response.data.content
+  $('#transposition select').val('') # reset to the original tone
   $('#input').val(decode(base64Content)).change()
   $('#github-dialog').dialog('close')
 
@@ -53,7 +57,6 @@ setupTransposition = ->
   $('#transposition select').on 'change', ->
     # TODO - Should the inline-edit textarea reflect the current tone?
     $('#input').change()
-    $('#song .tone').text(this.value) if this.value
 
 setupChordsVisibility = ->
   $('#show-real-chords').change -> $('#song tr.chords').toggle()
