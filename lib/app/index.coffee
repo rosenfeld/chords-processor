@@ -55,8 +55,9 @@ replaceSong = (response)->
 setupTransposition = ->
   $(document).on 'click', '#song .tone', -> $('#transposition').dialog()
   $('#transposition select').on 'change', ->
-    # TODO - Should the inline-edit textarea reflect the current tone?
-    $('#input').change()
+    tone = $('#transposition select').val()
+    transposed = new SourceTransposer($('#input').text(), tone).transposedSource()
+    $('#input').text(transposed).change()
 
 setupChordsVisibility = ->
   $('#show-real-chords').change -> $('#song tr.chords').toggle()
