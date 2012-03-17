@@ -90,7 +90,10 @@
       return $('#transposition').dialog();
     });
     return $('#transposition select').on('change', function() {
-      return $('#input').change();
+      var tone, transposed;
+      tone = $('#transposition select').val();
+      transposed = new SourceTransposer($('#input').text(), tone).transposedSource();
+      return $('#input').text(transposed).change();
     });
   };
 
