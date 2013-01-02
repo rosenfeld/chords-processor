@@ -1,9 +1,9 @@
 #stylesheet textarea { width: 100%; }
-textarea#input { width: 50%; height: 90%; display: block; }
+textarea#input { width: 90%; height: 90%; display: block; }
 
 #input-container {
   position: absolute;
-  min-width: 800px;
+  min-width: 550px;
   width: 50%;
   right: 0;
   top: 0;
