@@ -42,8 +42,29 @@ renderGithubSongsList = (response)->
       $.getJSON("#{item.url}?callback=?", replaceSong)
 
 decodePath = (path)->
-  decodeURI escape path.replace /\\(\d{3})\\(\d{3})/g, (_, oct1, oct2)->
-    String.fromCharCode(parseInt("0#{oct1}"), parseInt("0#{oct2}"))
+  # simplification of https://gist.github.com/2762688:
+  # function getCodePoint(array) {
+  #
+  #	/*-----------------------------------------------------------------------------------------
+  #	[UCS-2 (UCS-4)]      [bit pattern]        [1st byte]  [2nd byte]  [3rd byte]  [4th byte]
+  #	U+ 0000..  U+007F    00000000-0xxxxxxx     0xxxxxxx
+  #	U+ 0080..  U+07FF    00000xxx-xxyyyyyy     110xxxxx    10yyyyyy
+  #	U+ 0800..  U+FFFF    xxxxyyyy-yyzzzzzz     1110xxxx    10yyyyyy    10zzzzzz    
+  #	U+10000..U+1FFFFF    00000000-000wwwxx     11110www    10xxxxxx    10yyyyyy    10zzzzzz
+  #	                     -xxxxyyyy-yyzzzzzzz
+  #	------------------------------------------------------------------------------------------*/
+  #
+  #	var bytes = array.length;
+  #	var firstShift = (bytes === 1) ? 0 : (bytes + 1);
+  #	var codePoint =	ar[0] & (0xFF >> firstShift);
+  #	for(var n = 1; n < bytes; n++) {
+  #		codePoint <<= 6;
+  #		codePoint += array[n] & 0x3F;	// Mask 0x00111111
+  #	}
+  #	return codePoint;
+  # }
+  decodeURI escape(path).replace /%5C(\d{3})%5C(\d{3})/gi, (_, oct1, oct2)->
+    String.fromCharCode(((0x3f & parseInt(oct1, 8)) << 6) + (parseInt(oct2, 8) & 0x3f))
 
 replaceSong = (response)->
   $('#remaining-github-requests').text(response.meta['X-RateLimit-Remaining'])
