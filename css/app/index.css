@@ -5,8 +5,8 @@ textarea#input { width: 90%; height: 90%; display: block; }
   position: absolute;
   min-width: 550px;
   width: 50%;
-  right: 0;
-  top: 0;
+  right: 1em;
+  top: 3em;
   bottom: 0;
 }
 
