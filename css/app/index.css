@@ -2,7 +2,7 @@
 textarea#input { width: 90%; height: 90%; display: block; }
 
 #input-container {
-  position: absolute;
+  position: fixed;
   min-width: 550px;
   width: 50%;
   right: 1em;
