@@ -30,6 +30,16 @@ describe 'Transposer', ->
     }
     expect(transposer.transpose(chord)).toEqual(transposed) for chord, transposed of expectations
 
+  it 'transposes from A to Bb', ->
+    transposer = new Transposer('A', 'Bb')
+    expectations = { 'A': 'B♭' }
+    expect(transposer.transpose(chord)).toEqual(transposed) for chord, transposed of expectations
+
+  it 'transposes from Bb to A', ->
+    transposer = new Transposer('Bb', 'A')
+    expectations = { 'Bb': 'A' }
+    expect(transposer.transpose(chord)).toEqual(transposed) for chord, transposed of expectations
+
   it 'transposes between minor tones', ->
     transposer = new Transposer('Am', 'Dm')
     expectations = {
