@@ -19,9 +19,11 @@
       regex = /\[([A-G].*?)\]/g;
       dest = this.source;
       while (m = regex.exec(this.source)) {
-        dest = dest.replace(m[0], "[" + (this.transposer.transpose(m[1])) + "]");
+        dest = dest.replace(m[0], "[__" + (this.transposer.transpose(m[1])) + "__]");
       }
-      m = /({\s*?tone\s*?:\s*?)([A-G])(.*?})/.exec(dest);
+      dest = dest.replace(/\[__/g, '[');
+      dest = dest.replace(/__\]/g, ']');
+      m = /({\s*?tone\s*?:\s*?)([A-G][b#♭♯]?)(.*?})/.exec(dest);
       return dest.replace(m[0], "" + m[1] + (this.transposer.transpose(m[2])) + m[3]).replace(/♯/g, '#').replace(/♭/g, 'b');
     };
 
