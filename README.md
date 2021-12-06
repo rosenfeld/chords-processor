@@ -29,7 +29,7 @@ their preferred songs in the supported format. In the future we might support ot
 usages of the GitHub API support for creating commits and pull requests directly from the
 example application.
 
-Note: be aware that GitHub limits its API usage to 5000 requests per hour.
+Note: be aware that GitHub limits its API usage to 60 requests per hour.
 
 Features
 ========
