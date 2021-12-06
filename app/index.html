@@ -9,15 +9,12 @@
   <script type="text/javascript" src="../js/parsers/chord_parser.js"></script>
   <script type="text/javascript" src="../js/transposer/source_transposer.js"></script>
   <script type="text/javascript" src="../js/formatters/html_formatter.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/ui/jquery-ui-git.js"></script>
-  <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/jquery-ui-git.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="../css/app/index.css">
   <script type="text/javascript" src="js/base64.js"></script>
   <script type="text/javascript" src="../js/app/index.js"></script>
-  <script type="text/javascript" src="js/google-analytics.js"></script>
-  <script type="text/javascript" src="js/google-plus.js"></script>
-  <script type="text/javascript" src="js/fb-liked-this.js"></script>
 </head>
 <body>
   <header>
@@ -30,9 +27,6 @@
     <label><input type=checkbox id=show-normalized-chords />Show normalized chords</label>
     <label><input type=checkbox id=show-lyrics checked />Show lyrics</label>
   </div>
-  <g:plusone annotation="inline"></g:plusone>
-  <div id="fb-root"></div>
-  <div class="fb-like" data-href="http://rosenfeld.github.com/chords-processor/app/index.html" data-send="true" data-width="450" data-show-faces="false"></div>
   </header>
   <div id="stylesheet" hidden>
     <textarea rows=8 cols=60>
@@ -97,7 +91,7 @@ Rebanhos [E7]a guar[Am]dar [E7]
          <label>Repository ID: <input type=text id=github-repositoryid value=harmonias /></label></div>
     <button id=github-get-songs-list-button>Get songs list</button>
     <span>Remaining GitHub API requests: <span id=remaining-github-requests></span>
-    (limited to 5000 per hour)</span>
+    (limited to 60 per hour)</span>
     <div id="github-songs-list"></div>
   </div>
 
