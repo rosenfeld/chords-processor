@@ -12,6 +12,9 @@ textarea#input { width: 90%; height: 90%; display: block; }
 
 #github-songs-list a { display: block }
 
+#song.two-column { column-count: 2; }
+#song table.chords { break-inside: avoid-column; }
+
 @media print {
   header { display: none }
 }

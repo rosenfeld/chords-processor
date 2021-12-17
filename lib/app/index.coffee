@@ -58,3 +58,4 @@ setupChordsVisibility = ->
   $('#show-real-chords').change -> $('#song tr.chords').toggle()
   $('#show-normalized-chords').change -> $('#song tr.normalized-chords').toggle()
   $('#show-lyrics').change -> $('#song tr.lyrics').toggle()
+  $('#two-columns').change -> $('#song').toggleClass('two-column')
