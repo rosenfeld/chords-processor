@@ -86,3 +86,7 @@ Authors
 =======
 
 [Rodrigo Rosenfeld Rosas](http://rosenfeld.heroku.com/en/)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rosenfeld/chords-processor/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
