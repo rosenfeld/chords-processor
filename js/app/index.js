@@ -103,8 +103,11 @@
     $('#show-normalized-chords').change(function() {
       return $('#song tr.normalized-chords').toggle();
     });
-    return $('#show-lyrics').change(function() {
+    $('#show-lyrics').change(function() {
       return $('#song tr.lyrics').toggle();
+    });
+    return $('#two-columns').change(function() {
+      return $('#song').toggleClass('two-column');
     });
   };
 
