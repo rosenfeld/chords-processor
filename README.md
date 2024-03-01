@@ -12,11 +12,6 @@ Example
 
 Take a look at [this example](http://rosenfeld.github.com/chords-processor).
 
-Make sure to use a recent browser with good support to HTML5. It is just an
-example app and I'll won't make any effort to make it work on non-conforming
-browsers. I'd advise you to use [es5-shim](https://github.com/kriskowal/es5-shim)
-if you care about them.
-
 GitHub integration
 ------------------
 
@@ -43,26 +38,17 @@ Currently those are the supported features:
 - Transposition support
 - Supports normalized chords
 
-Building from source
-====================
+Running the tests
+=================
 
-All scripts are written in [CoffeeScript](http://coffeescript.org/).
+To run all Jasmine tests, simply:
 
-Just install [Node.js](http://nodejs.org/) (latest version already includes npm)
-and install coffeescript:
+    npm test
 
-    npm install coffeescript
+Before submitting pull requests, besides running all tests, make sure to also
+run eslint:
 
-Then just run ./build.sh or, if you're on Windows:
-
-    coffee -c -o js lib/
-
-If you want to contribute, I'd suggest you to take a look at [jitter](https://github.com/TrevorBurnham/Jitter):
-
-    npm install jitter
-    jitter lib/ js/
-
-This will watch for changes and regenerate the JavaScript after each change.
+    npm run lint
 
 Contributions / TO-DO
 ====================
@@ -85,8 +71,5 @@ If you think you've found any bugs, please report them in the
 Authors
 =======
 
-[Rodrigo Rosenfeld Rosas](http://rosenfeld.heroku.com/en/)
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rosenfeld/chords-processor/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[Rodrigo Rosenfeld Rosas](http://rosenfeld.page)
 

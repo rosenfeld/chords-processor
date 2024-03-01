@@ -1,0 +1,24 @@
+{
+  "name": "chords-processor",
+  "version": "0.1.0",
+  "author": "Rodrigo Rosenfeld Rosas <rr.rosas@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rosenfeld/chords-processor"
+  },
+  "homepage": "https://github.com/rosenfeld/chords-processor",
+  "index": "lib/parsers/chord_parser",
+  "license": "MIT",
+  "scripts": {
+    "test": "jasmine",
+    "lint": "eslint ."
+  },
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jasmine": "^4.1.3",
+    "jasmine": "^5.1.0"
+  }
+}

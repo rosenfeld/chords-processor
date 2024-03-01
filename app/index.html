@@ -5,20 +5,17 @@
 
   <title>Songs chords browser</title>
   <style type="text/css" id=songstyle></style>
-  <script type="text/javascript" src="../js/transposer/transposer.js"></script>
-  <script type="text/javascript" src="../js/parsers/chord_parser.js"></script>
-  <script type="text/javascript" src="../js/transposer/source_transposer.js"></script>
-  <script type="text/javascript" src="../js/formatters/html_formatter.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="../css/app/index.css">
-  <script type="text/javascript" src="js/base64.js"></script>
-  <script type="text/javascript" src="../js/app/index.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+  <script type="module" src="../../lib/app/index.js"></script>
 </head>
 <body>
   <header>
-  <a href="http://github.com/rosenfeld/chords-processor"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+
+  <a class="github-fork-ribbon" href="http://github.com/rosenfeld/chords-processor" data-ribbon="Fork me on GitHub" title="Fork me on GitHub" style="position: absolute; top: 0; right: 0; border: 0;">Fork me on GitHub</a>
   <div>
     <button id=customize>Customize output</button>
     <button id=fetch-from-github>Fetch from GitHub repository</button>
