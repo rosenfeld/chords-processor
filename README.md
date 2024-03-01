@@ -10,7 +10,7 @@ This library formats to HTML input like this:
 Example
 =======
 
-Take a look at [this example](http://rosenfeld.github.com/chords-processor).
+Take a look at [this example](https://rosenfeld.github.io/chords-processor/app).
 
 GitHub integration
 ------------------
